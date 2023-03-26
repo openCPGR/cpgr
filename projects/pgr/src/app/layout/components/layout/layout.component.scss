@@ -1,0 +1,10 @@
+.pgr {
+  &-sidebar {
+    height: calc(100vh - 3rem);
+    width: 3rem;
+    position: relative;
+  }
+  &-outlet {
+    min-height: calc(100% - 1.5rem);
+  }
+}
