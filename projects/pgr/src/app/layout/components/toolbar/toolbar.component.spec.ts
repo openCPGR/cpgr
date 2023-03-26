@@ -22,4 +22,11 @@ describe('ToolbarComponent', () => {
   it('should create', () => {
     expect(component).toBeTruthy();
   });
+
+  it('should toggle sidebar',()=>{
+    spyOn(component.toggle,'emit')
+    component.toggleButton();
+    expect(component.isOpened).toBeTrue();
+    expect(component.toggle.emit).toHaveBeenCalledOnceWith(true);
+  })
 });

@@ -94,12 +94,12 @@
             "tsConfig": "projects/pgr/tsconfig.spec.json",
             "karmaConfig": "projects/pgr/karma.conf.js",
             "inlineStyleLanguage": "scss",
+            "codeCoverage": true,
             "assets": [
               "projects/pgr/src/favicon.ico",
               "projects/pgr/src/assets"
             ],
             "styles": [
-              "./node_modules/@angular/material/prebuilt-themes/indigo-pink.css",
               "projects/pgr/src/styles.scss"
             ],
             "scripts": []
