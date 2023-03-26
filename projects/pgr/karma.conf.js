@@ -30,14 +30,22 @@ module.exports = function (config) {
       reporters: [
         { type: 'html' },
         { type: 'text-summary' }
-      ]
+      ],
+      check: {
+        global: {
+          statements: 98,
+          branches: 98,
+          functions: 98,
+          lines: 98
+        }
+      }
     },
     reporters: ['progress', 'kjhtml'],
     port: 9876,
     colors: true,
     logLevel: config.LOG_INFO,
     autoWatch: true,
-    browsers: ['Chrome'],
+    browsers: ['ChromeHeadless'],
     singleRun: false,
     restartOnFileChange: true
   });
