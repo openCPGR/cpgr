@@ -1,1 +1,10 @@
-<p>layout works!</p>
+<pgr-toolbar (toggle)="toggle($event)"></pgr-toolbar>
+<div class="d-flex">
+  <pgr-sidebar [isSidebarOpened]="isSidebarOpened" class="pgr-sidebar"></pgr-sidebar>
+  <div class="col">
+    <div class="pgr-outlet">
+        <router-outlet></router-outlet>
+    </div>
+    <pgr-footer></pgr-footer>
+  </div>
+</div>

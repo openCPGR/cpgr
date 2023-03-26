@@ -15,7 +15,7 @@
       },
       "root": "projects/pgr",
       "sourceRoot": "projects/pgr/src",
-      "prefix": "app",
+      "prefix": "pgr",
       "architect": {
         "build": {
           "builder": "@angular-devkit/build-angular:browser",

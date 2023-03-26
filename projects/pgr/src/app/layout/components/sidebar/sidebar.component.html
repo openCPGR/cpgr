@@ -1,0 +1,10 @@
+<nav class="navbar-nav navbar-dark bg-dark" [ngClass]="isSidebarOpened ? 'open' : ''">
+  <ng-container *ngFor="let item of navList">
+    <a class="nav-link active" aria-current="page">
+      <button class="btn btn-dark">
+        <i class="fa-solid fa-{{item.icon}}"></i>
+      </button>
+      <div class="nav-text">{{item.name}}</div>
+    </a>
+  </ng-container>
+</nav>
