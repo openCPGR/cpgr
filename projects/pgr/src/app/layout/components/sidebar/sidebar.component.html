@@ -1,10 +1,15 @@
 <nav class="navbar-nav navbar-dark bg-dark" [ngClass]="isSidebarOpened ? 'open' : ''">
   <ng-container *ngFor="let item of navList">
-    <a class="nav-link active" aria-current="page">
+    <a class="nav-link active" aria-current="page" [routerLink]="item.link">
       <button class="btn btn-dark">
-        <i class="fa-solid fa-{{item.icon}}"></i>
+        <i class="bi bi-{{ item.icon }}"></i>
       </button>
-      <div class="nav-text">{{item.name}}</div>
+      <div class="nav-text">{{ item.name }}</div>
     </a>
   </ng-container>
+  <div class="mt-auto">
+    <button class="btn btn-dark">
+      <i class="bi bi-gear"></i>
+    </button>
+  </div>
 </nav>

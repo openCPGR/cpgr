@@ -1,6 +1,11 @@
 /* You can add global styles to this file, and also import other style files */
 @import './scss/variables';
 @import "bootstrap/scss/bootstrap";
+@import 'node_modules/bootstrap-icons/font/bootstrap-icons.scss';
 
 html, body { height: 100%; }
-body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+body { margin: 0; font-family: 'Noto Sans'; }
+
+.bi::before{
+    font-size: 1.25rem;
+}
