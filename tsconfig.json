@@ -11,6 +11,10 @@
       "grid": [
         "dist/grid/grid",
         "dist/grid"
+      ],
+      "ticket-mgt": [
+        "dist/ticket-mgt/ticket-mgt",
+        "dist/ticket-mgt"
       ]
     },
     "noPropertyAccessFromIndexSignature": true,
