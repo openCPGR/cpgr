@@ -1,11 +1,19 @@
 /* You can add global styles to this file, and also import other style files */
-@import './scss/variables';
+@import "./scss/variables";
 @import "bootstrap/scss/bootstrap";
-@import 'node_modules/bootstrap-icons/font/bootstrap-icons.scss';
+@import "bootstrap-icons/font/bootstrap-icons.scss";
+@import "ag-grid-community/styles/ag-grid.css";
+@import "ag-grid-community/styles/ag-theme-material.css";
 
-html, body { height: 100%; }
-body { margin: 0; font-family: 'Noto Sans'; }
+html,
+body {
+  height: 100%;
+}
+body {
+  margin: 0;
+  font-family: "Noto Sans";
+}
 
-.bi::before{
-    font-size: 1.25rem;
+.bi::before {
+  font-size: 1.25rem;
 }

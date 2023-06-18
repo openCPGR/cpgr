@@ -1,5 +1,37 @@
-<pgr-toolbar (toggle)="toggle($event)"></pgr-toolbar>
-<div class="d-flex">
+<div class="d-flex flex-column pgr">
+  <pgr-toolbar (toggle)="toggle($event)"></pgr-toolbar>
+  <div class="d-flex flex-row pgr-container">
+    <pgr-sidebar
+      [isSidebarOpened]="isSidebarOpened"
+      class="pgr-sidebar">
+    </pgr-sidebar>
+    <div class="flex-fill">
+      <div class="pgr-outlet">
+        <router-outlet></router-outlet>
+      </div>
+      <pgr-footer></pgr-footer>
+    </div>
+  </div>
+</div>
+
+<!-- <div class="pgr">
+  <pgr-toolbar (toggle)="toggle($event)"></pgr-toolbar>
+  <div class="container-fluid">
+    <div class="row">
+      <div class="col-2">
+        <pgr-sidebar
+          [isSidebarOpened]="isSidebarOpened"
+          class="pgr-sidebar row">
+        </pgr-sidebar>
+      </div>
+      <div class="col-10">
+        2
+      </div>
+    </div>
+  </div>
+</div> -->
+<!-- <pgr-toolbar (toggle)="toggle($event)"></pgr-toolbar>
+<div class="col">
   <pgr-sidebar [isSidebarOpened]="isSidebarOpened" class="pgr-sidebar"></pgr-sidebar>
   <div class="col">
     <div class="pgr-outlet">
@@ -7,4 +39,4 @@
     </div>
     <pgr-footer></pgr-footer>
   </div>
-</div>
+</div> -->
