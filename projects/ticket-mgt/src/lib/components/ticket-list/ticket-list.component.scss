@@ -1,0 +1,5 @@
+$breadcrumb-height : 2.5rem;
+.ticket-grid {
+    height: calc(100% - $breadcrumb-height);
+    display: block;
+}
