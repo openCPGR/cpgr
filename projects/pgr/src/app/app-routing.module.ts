@@ -10,7 +10,7 @@ const routes: Routes = [
   {
     path: 'tickets',
     loadChildren: () =>
-      import('./feature/ticket-mgt/ticket-mgt.module').then(
+      import('projects/ticket-mgt/src/public-api').then(
         (m) => m.TicketMgtModule
       ),
   },
