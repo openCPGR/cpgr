@@ -1,10 +1,16 @@
 $header-height: 2.75rem;
+$footer-height: 1.5rem;
 .pgr {
+  height: 100vh;
+  overflow: hidden;
   &-sidebar {
     height: calc(100vh - $header-height);
-    position: relative;
   }
-  &-outlet {
-    min-height: calc(100% - 1.5rem);
+  &-container {
+    height: calc(100vh - $header-height);
+  }
+  &-outlet{
+    height: calc(100% - $footer-height);
+    overflow: auto;
   }
 }
