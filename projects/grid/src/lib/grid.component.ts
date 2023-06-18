@@ -1,5 +1,5 @@
 import { HttpClient } from '@angular/common/http';
-import { Component, OnInit, ViewChild } from '@angular/core';
+import { Component, OnInit, ViewChild , Input} from '@angular/core';
 import { AgGridAngular } from 'ag-grid-angular';
 import { ColDef, GridReadyEvent, CellClickedEvent } from 'ag-grid-community';
 import { Observable } from 'rxjs';
@@ -11,17 +11,21 @@ import { Observable } from 'rxjs';
 })
 export class GridComponent implements OnInit {
 
-  constructor(private http: HttpClient) { }
-
-  ngOnInit(): void {
-  }
-
-  public columnDefs: ColDef[] = [
+  @Input() columnDefs: ColDef[] = [
     { field: 'make'},
     { field: 'model'},
     { field: 'price' },
     { field: 'name' }
   ];
+
+  @Input() rowData$!: Observable<any[]>;
+
+  constructor(private http: HttpClient) { }
+
+  ngOnInit(): void {
+  }
+
+  
 
   // DefaultColDef sets props common to all Columns
   public defaultColDef: ColDef = {
@@ -29,9 +33,6 @@ export class GridComponent implements OnInit {
     filter: true,
   };
   
-  // Data that gets displayed in the grid
-  public rowData$!: Observable<any[]>;
-
   // For accessing the Grid's API
   @ViewChild(AgGridAngular) agGrid!: AgGridAngular;
 
