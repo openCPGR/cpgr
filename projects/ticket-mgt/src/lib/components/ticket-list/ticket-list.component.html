@@ -9,4 +9,4 @@
   </ol>
   <button class="btn"routerLink="create" ><i class="bi bi-patch-plus"></i></button>
 </nav>
-<lib-grid class="ticket-grid"></lib-grid>
+<lib-grid [columnDefs]="conDef" [rowData$]="rowData$" (onGridReady)="onGridReady($event)" class="ticket-grid"></lib-grid>

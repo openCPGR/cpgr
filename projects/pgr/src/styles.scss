@@ -1,5 +1,6 @@
 /* You can add global styles to this file, and also import other style files */
 @import "./scss/variables";
+
 @import "bootstrap/scss/bootstrap";
 @import "bootstrap-icons/font/bootstrap-icons.scss";
 @import "ag-grid-community/styles/ag-grid.css";
@@ -16,4 +17,8 @@ body {
 
 .bi::before {
   font-size: 1.25rem;
+}
+
+.overflow-v{
+  overflow: visible;
 }

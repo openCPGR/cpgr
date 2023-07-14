@@ -3,3 +3,7 @@ $breadcrumb-height : 2.5rem;
     height: calc(100% - $breadcrumb-height);
     display: block;
 }
+
+.new {
+    overflow: visible;
+}
