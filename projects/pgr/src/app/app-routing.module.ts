@@ -8,6 +8,13 @@ const routes: Routes = [
       import('./feature/home/home.module').then((m) => m.HomeModule),
   },
   {
+    path: 'dashboard',
+    loadChildren: () =>
+      import('./feature/dashboard/dashboard.module').then(
+        (m) => m.DashboardModule
+      ),
+  },
+  {
     path: 'tickets',
     loadChildren: () =>
       import('projects/ticket-mgt/src/public-api').then(

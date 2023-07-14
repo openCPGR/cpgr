@@ -3,12 +3,14 @@ import { GridComponent } from './grid.component';
 import { AgGridModule } from 'ag-grid-angular';
 import { HttpClientModule } from '@angular/common/http'
 import { CommonModule } from '@angular/common';
+import { ActionComponent } from './cell-renderer/action/action.component';
 
 
 
 @NgModule({
   declarations: [
-    GridComponent
+    GridComponent,
+    ActionComponent
   ],
   imports: [
     CommonModule,
@@ -17,7 +19,8 @@ import { CommonModule } from '@angular/common';
     
   ],
   exports: [
-    GridComponent
+    GridComponent,
+    ActionComponent
   ]
 })
 export class GridModule { }
