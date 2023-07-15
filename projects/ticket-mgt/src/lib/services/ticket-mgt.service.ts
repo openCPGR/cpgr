@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { ITicket } from '../interfaces/ticket.interaface';
+import { ITicket } from '../interface/ticket.interface';
 
 @Injectable({
   providedIn: 'root',
@@ -24,6 +24,14 @@ export class TicketMgtService {
 
   create(ticket: ITicket) {
     this.tickets.push(ticket);
+  }
+
+  update(ticket: ITicket): void {
+    const id = ticket.id;
+    const index = this.tickets.findIndex((ticket) => ticket.id === id);
+    if (index >= 0) {
+      this.tickets[index] = ticket;
+    }
   }
 
   getList(): ITicket[] {

@@ -1,15 +1,16 @@
 import { Component, OnInit } from '@angular/core';
 import { Observable } from 'rxjs';
 import { TicketMgtService } from '../../services/ticket-mgt.service';
-import { ITicket } from '../../interfaces/ticket.interaface';
+import { ITicket } from '../../interface/ticket.interface';
 import {
   ColDef,
   GridReadyEvent,
-  RowClickedEvent,
+  ICellRendererParams,
   RowDoubleClickedEvent,
 } from 'ag-grid-community';
 import { Router } from '@angular/router';
 import { Location } from '@angular/common';
+import { INav } from 'projects/pgr/src/app/layout/components/sidebar/nav.interface';
 
 @Component({
   selector: 'lib-ticket-list',
@@ -17,6 +18,13 @@ import { Location } from '@angular/common';
   styleUrls: ['./ticket-list.component.scss'],
 })
 export class TicketListComponent implements OnInit {
+  nav: INav[] = [
+    {
+      name: 'Ticket Management',
+      link: '',
+      icon: 'ticket-detailed',
+    },
+  ];
   conDef: ColDef[] = [
     { field: 'id', sort: 'desc' },
     { field: 'name' },
@@ -25,6 +33,14 @@ export class TicketListComponent implements OnInit {
     {
       field: 'action',
       cellRenderer: 'ActionComponent',
+      cellRendererParams: {
+        editClicked: (params: ICellRendererParams) => {
+          this.editClick(params);
+        },
+        viewClicked: (params: ICellRendererParams) => {
+          this.viewClick(params);
+        },
+      },
       filter: false,
       cellStyle: { overflow: 'visible' },
     },
@@ -47,6 +63,16 @@ export class TicketListComponent implements OnInit {
 
   onRowDoubleClicked(row: RowDoubleClickedEvent) {
     const ticket: ITicket = row.data;
+    this._router.navigateByUrl('tickets/view/' + ticket.id);
+  }
+
+  editClick(params: ICellRendererParams): void {
+    const ticket: ITicket = params.data;
+    this._router.navigate(['tickets/create'], { state: ticket });
+  }
+
+  viewClick(params: ICellRendererParams): void {
+    const ticket: ITicket = params.data;
     this._router.navigateByUrl('tickets/view/' + ticket.id);
   }
 }

@@ -1,0 +1,18 @@
+<nav aria-label="breadcrumb" class="d-flex">
+  <ol class="breadcrumb m-2 me-auto">
+    <li class="breadcrumb-item">
+      <a (click)="location.back()"> <i class="bi bi-arrow-left"></i> </a>
+    </li>
+    <ng-container *ngFor="let nav of navList; let i = index">
+      <li class="breadcrumb-item active" aria-current="page">
+        <a [routerLink]="nav.link" *ngIf="i < navList.length - 1">
+          {{ nav.name }}
+        </a>
+        <a *ngIf="i === navList.length - 1">
+          {{ nav.name }}
+        </a>
+      </li>
+    </ng-container>
+  </ol>
+  <ng-content></ng-content>
+</nav>
