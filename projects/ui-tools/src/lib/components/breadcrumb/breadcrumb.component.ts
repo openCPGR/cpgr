@@ -1,6 +1,6 @@
 import { Location } from '@angular/common';
 import { Component, Input, OnInit } from '@angular/core';
-import { INav } from 'projects/pgr/src/app/layout/components/sidebar/nav.interface';
+import { INav } from '../../interfaces/nav.interface';
 
 @Component({
   selector: 'lib-breadcrumb',

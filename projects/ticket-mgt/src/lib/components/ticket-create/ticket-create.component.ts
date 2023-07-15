@@ -2,9 +2,9 @@ import { Component, OnInit } from '@angular/core';
 import { TicketMgtService } from '../../services/ticket-mgt.service';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
-import { INav } from 'projects/pgr/src/app/layout/components/sidebar/nav.interface';
 import { Location } from '@angular/common';
 import { ITicket } from '../../interface/ticket.interface';
+import { INav } from 'projects/ui-tools/src/public-api';
 
 @Component({
   selector: 'lib-ticket-create',
@@ -56,7 +56,6 @@ export class TicketCreateComponent implements OnInit {
         id: '' + (this._ticketService.getList().length + 1),
       });
     }
-
     this._router.navigateByUrl('tickets');
   }
 }

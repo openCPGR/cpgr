@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { ITicket } from '../../interface/ticket.interface';
 import { TicketMgtService } from '../../services/ticket-mgt.service';
-import { INav } from 'projects/pgr/src/app/layout/components/sidebar/nav.interface';
+import { INav } from 'projects/ui-tools/src/public-api';
 
 @Component({
   selector: 'lib-ticket-view',
