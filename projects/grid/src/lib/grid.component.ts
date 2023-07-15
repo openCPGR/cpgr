@@ -13,6 +13,8 @@ import {
   GridReadyEvent,
   CellClickedEvent,
   FrameworkComponentWrapper,
+  RowClickedEvent,
+  RowDoubleClickedEvent,
 } from 'ag-grid-community';
 import { Observable } from 'rxjs';
 import { ActionComponent } from './cell-renderer/action/action.component';
@@ -27,7 +29,8 @@ export class GridComponent implements OnInit {
 
   @Input() rowData$!: Observable<any[]>;
   @Output() onGridReady = new EventEmitter<GridReadyEvent>();
-
+  @Output() onRowClicked = new EventEmitter<RowClickedEvent>();
+  @Output() onRowDoubleClicked = new EventEmitter<RowDoubleClickedEvent>();
   comp = { ActionComponent: ActionComponent };
 
   constructor(private http: HttpClient) {}
@@ -54,5 +57,12 @@ export class GridComponent implements OnInit {
   // Example of consuming Grid Event
   onCellClicked(e: CellClickedEvent): void {
     console.log('cellClicked', e);
+  }
+
+  rowClicked(row: RowClickedEvent): void {
+    this.onRowClicked.emit(row);
+  }
+  rowDoubleClicked(row: RowDoubleClickedEvent): void {
+    this.onRowDoubleClicked.emit(row);
   }
 }

@@ -25,7 +25,7 @@ export class TicketCreateComponent implements OnInit {
   createTicket() {
     this._ticketService.create({
       ...this.ticket.value,
-      id: this._ticketService.getList().length+1,
+      id: '' + (this._ticketService.getList().length + 1),
     });
     this.router.navigateByUrl('tickets');
   }
