@@ -15,6 +15,10 @@
       "ticket-mgt": [
         "dist/ticket-mgt/ticket-mgt",
         "dist/ticket-mgt"
+      ],
+      "ui-tools": [
+        "dist/ui-tools/ui-tools",
+        "dist/ui-tools"
       ]
     },
     "noPropertyAccessFromIndexSignature": true,

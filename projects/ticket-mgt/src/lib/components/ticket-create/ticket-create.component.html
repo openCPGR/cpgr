@@ -1,13 +1,19 @@
+<lib-breadcrumb [navList]="nav"> </lib-breadcrumb>
 <div class="container-fluid p-4">
   <form [formGroup]="ticket" class="row g-3">
     <div class="col-md-6">
       <label for="inputPassword4" class="form-label">Name</label>
-      <input type="text"  formControlName="name"  class="form-control" id="inputPassword4" />
+      <input
+        type="text"
+        formControlName="name"
+        class="form-control"
+        id="inputPassword4"
+      />
     </div>
     <div class="col-12">
-      <label for="inputAddress2"   class="form-label">Description</label>
+      <label for="inputAddress2" class="form-label">Description</label>
       <textarea
-      formControlName="description"
+        formControlName="description"
         class="form-control"
         name="description"
         id="inputAddress2"
@@ -15,22 +21,34 @@
         rows="2"
       ></textarea>
     </div>
-    
+
     <div class="col-md-4">
       <label for="inputState" class="form-label">Type</label>
-      <select id="inputState"  formControlName="type" class="form-select">
+      <select id="inputState" formControlName="type" class="form-select">
         <option selected>Internal</option>
         <option>External</option>
       </select>
     </div>
     <div class="col-12">
       <div class="form-check">
-        <input class="form-check-input"  formControlName="check" type="checkbox" id="gridCheck" />
-        <label class="form-check-label"  for="gridCheck"> Check me out </label>
+        <input
+          class="form-check-input"
+          formControlName="check"
+          type="checkbox"
+          id="gridCheck"
+        />
+        <label class="form-check-label" for="gridCheck"> Check me out </label>
       </div>
     </div>
     <div class="col-12">
-      <button type="submit" [disabled]="ticket.invalid" (click)="createTicket()" class="btn btn-primary">Create Ticket</button>
+      <button
+        type="submit"
+        [disabled]="ticket.invalid"
+        (click)="createTicket()"
+        class="btn btn-primary"
+      >
+        {{ isEdit ? "Update" : "Create" }} Ticket
+      </button>
     </div>
   </form>
 </div>

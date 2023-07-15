@@ -1,16 +1,8 @@
-<nav aria-label="breadcrumb" class="d-flex">
-  <ol class="breadcrumb m-2 me-auto">
-    <li class="breadcrumb-item">
-      <a (click)="location.back()"> <i class="bi bi-arrow-left"></i> </a>
-    </li>
-    <li class="breadcrumb-item active" aria-current="page">
-      Ticket Management
-    </li>
-  </ol>
-  <button class="btn" routerLink="create">
-    <i class="bi bi-patch-plus"></i>
+<lib-breadcrumb [navList]="nav">
+  <button class="btn" routerLink="create" title="Create ticket">
+    <i class="bi bi-plus-square"></i>
   </button>
-</nav>
+</lib-breadcrumb>
 <lib-grid
   [columnDefs]="conDef"
   [rowData$]="rowData$"

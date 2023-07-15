@@ -7,14 +7,23 @@
   ></button>
   <ul class="dropdown-menu">
     <li>
-      <a class="dropdown-item"><i class="bi bi-eye pe-1"></i>View</a>
+      <a *ngIf="this.params?.viewClicked" class="dropdown-item" (click)="viewClicked()">
+        <i class="bi bi-eye pe-1"></i>View
+      </a>
+    </li>
+    <li>
+      <a
+        *ngIf="this.params?.editClicked"
+        class="dropdown-item"
+        (click)="editClicked()"
+      >
+        <i class="bi bi-pencil-square pe-1"></i>Edit</a
+      >
     </li>
     <li>
       <a class="dropdown-item">
-        <i class="bi bi-pencil-square pe-1"></i>Edit</a>
-    </li>
-    <li>
-      <a class="dropdown-item"> <i class="bi bi-play-btn pe-1"></i>Start</a>
+        <i class="bi bi-play-btn pe-1"></i>Start
+      </a>
     </li>
   </ul>
 </div>
