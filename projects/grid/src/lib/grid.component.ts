@@ -53,12 +53,7 @@ export class GridComponent implements OnInit {
     // params.api.sizeColumnsToFit()
     this.onGridReady.emit(params);
   }
-
-  // Example of consuming Grid Event
-  onCellClicked(e: CellClickedEvent): void {
-    console.log('cellClicked', e);
-  }
-
+  
   rowClicked(row: RowClickedEvent): void {
     this.onRowClicked.emit(row);
   }

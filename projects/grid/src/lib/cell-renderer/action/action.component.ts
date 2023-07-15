@@ -23,13 +23,13 @@ export class ActionComponent implements ICellRendererAngularComp {
 
   viewClicked() {
     if (this.params?.viewClicked) {
-      this.params?.viewClicked(this.params);
+      this.params.viewClicked(this.params);
     }
   }
 
   editClicked() {
     if (this.params?.editClicked) {
-      this.params?.editClicked(this.params);
+      this.params.editClicked(this.params);
     }
   }
 }
