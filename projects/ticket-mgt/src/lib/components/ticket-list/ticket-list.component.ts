@@ -9,8 +9,7 @@ import {
   RowDoubleClickedEvent,
 } from 'ag-grid-community';
 import { Router } from '@angular/router';
-import { Location } from '@angular/common';
-import { INav } from 'projects/pgr/src/app/layout/components/sidebar/nav.interface';
+import { INav } from 'projects/ui-tools/src/public-api';
 
 @Component({
   selector: 'lib-ticket-list',
@@ -48,8 +47,7 @@ export class TicketListComponent implements OnInit {
   rowData$!: Observable<ITicket[]>;
   constructor(
     private _ticketService: TicketMgtService,
-    private _router: Router,
-    public location: Location
+    private _router: Router
   ) {}
 
   ngOnInit(): void {}
