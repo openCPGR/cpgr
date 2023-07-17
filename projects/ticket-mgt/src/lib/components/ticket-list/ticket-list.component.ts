@@ -34,10 +34,10 @@ export class TicketListComponent implements OnInit {
       cellRenderer: 'ActionComponent',
       cellRendererParams: {
         editClicked: (params: ICellRendererParams) => {
-          this.editClick(params);
+          this.editClicked(params);
         },
         viewClicked: (params: ICellRendererParams) => {
-          this.viewClick(params);
+          this.viewClicked(params);
         },
       },
       filter: false,
@@ -64,12 +64,12 @@ export class TicketListComponent implements OnInit {
     this._router.navigateByUrl('tickets/view/' + ticket.id);
   }
 
-  editClick(params: ICellRendererParams): void {
+  editClicked(params: ICellRendererParams): void {
     const ticket: ITicket = params.data;
     this._router.navigate(['tickets/create'], { state: ticket });
   }
 
-  viewClick(params: ICellRendererParams): void {
+  viewClicked(params: ICellRendererParams): void {
     const ticket: ITicket = params.data;
     this._router.navigateByUrl('tickets/view/' + ticket.id);
   }

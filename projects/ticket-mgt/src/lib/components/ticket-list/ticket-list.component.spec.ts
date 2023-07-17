@@ -47,9 +47,13 @@ describe('TicketListComponent', () => {
   });
 
   it('should update row data on grid ready', () => {
+    ticketServiceSpy.getList.and.returnValue([]);
     component.onGridReady({
       api: { sizeColumnsToFit: () => {} },
     } as GridReadyEvent);
+    component.rowData$.subscribe((data) => {
+      expect(data).toEqual([]);
+    });
     expect(component.rowData$).toBeTruthy();
   });
 
@@ -59,12 +63,21 @@ describe('TicketListComponent', () => {
   });
 
   it('should edit ticket on edit action click', () => {
-    component.editClick({ data: {} } as ICellRendererParams);
+    component.editClicked({ data: {} } as ICellRendererParams);
     expect(routerSpy.navigate).toHaveBeenCalled();
   });
 
   it('should view ticket on view action click', () => {
-    component.viewClick({ data: {} } as ICellRendererParams);
+    component.viewClicked({ data: {} } as ICellRendererParams);
     expect(routerSpy.navigateByUrl).toHaveBeenCalled();
+  });
+
+  it('should check cell renderers', () => {
+    spyOn(component, 'editClicked');
+    spyOn(component, 'viewClicked');
+    component.conDef[4].cellRendererParams.editClicked();
+    component.conDef[4].cellRendererParams.viewClicked();
+    expect(component.editClicked).toHaveBeenCalled();
+    expect(component.viewClicked).toHaveBeenCalled();
   });
 });
