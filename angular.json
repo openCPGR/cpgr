@@ -35,7 +35,8 @@
             ],
             "scripts": [
               "@popperjs/core/dist/umd/popper.min.js",
-              "bootstrap/dist/js/bootstrap.min.js"
+              "bootstrap/dist/js/bootstrap.min.js",
+              "leaflet/dist/leaflet.js"
             ]
           },
           "configurations": {
@@ -199,6 +200,37 @@
             "main": "projects/ui-tools/src/test.ts",
             "tsConfig": "projects/ui-tools/tsconfig.spec.json",
             "karmaConfig": "projects/ui-tools/karma.conf.js"
+          }
+        }
+      }
+    },
+    "map": {
+      "projectType": "library",
+      "root": "projects/map",
+      "sourceRoot": "projects/map/src",
+      "prefix": "jd",
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-angular:ng-packagr",
+          "options": {
+            "project": "projects/map/ng-package.json"
+          },
+          "configurations": {
+            "production": {
+              "tsConfig": "projects/map/tsconfig.lib.prod.json"
+            },
+            "development": {
+              "tsConfig": "projects/map/tsconfig.lib.json"
+            }
+          },
+          "defaultConfiguration": "production"
+        },
+        "test": {
+          "builder": "@angular-devkit/build-angular:karma",
+          "options": {
+            "main": "projects/map/src/test.ts",
+            "tsConfig": "projects/map/tsconfig.spec.json",
+            "karmaConfig": "projects/map/karma.conf.js"
           }
         }
       }

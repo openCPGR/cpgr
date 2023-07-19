@@ -12,6 +12,10 @@
         "dist/grid/grid",
         "dist/grid"
       ],
+      "map": [
+        "dist/map/map",
+        "dist/map"
+      ],
       "ticket-mgt": [
         "dist/ticket-mgt/ticket-mgt",
         "dist/ticket-mgt"

@@ -26,9 +26,9 @@ export class SidebarComponent implements OnInit {
       icon: 'ticket-detailed',
     },
     {
-      name: 'User Management',
-      link: 'users',
-      icon: 'people',
+      name: 'Map',
+      link: 'map',
+      icon: 'pin-map',
     },
   ];
 

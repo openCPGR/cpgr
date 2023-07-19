@@ -22,6 +22,11 @@ const routes: Routes = [
       ),
   },
   {
+    path: 'map',
+    loadChildren: () =>
+      import('projects/map/src/public-api').then((m) => m.MapModule),
+  },
+  {
     path: '',
     redirectTo: 'home',
     pathMatch: 'full',

@@ -1,8 +1,8 @@
 /* You can add global styles to this file, and also import other style files */
 @import "./scss/variables";
-
 @import "bootstrap/scss/bootstrap";
 @import "bootstrap-icons/font/bootstrap-icons.scss";
+@import "leaflet/dist/leaflet.css";
 @import "ag-grid-community/styles/ag-grid.css";
 @import "ag-grid-community/styles/ag-theme-material.css";
 
@@ -19,6 +19,6 @@ body {
   // font-size: 1.25rem;
 }
 
-.overflow-v{
+.overflow-v {
   overflow: visible;
 }
