@@ -1,54 +1,60 @@
-import { Component, OnInit } from '@angular/core';
+import {
+  Component,
+  ElementRef,
+  OnInit,
+  ViewChild,
+  ViewContainerRef,
+} from '@angular/core';
 import { CanvasLayer } from '../../layers/canvas.layer';
-
+import { POSITIONS } from '../../enums/map.enum';
+import { Map, TileLayer } from 'leaflet';
+import { BottomRightControl } from '../../layers/control.layer';
 declare var L: any;
-
 @Component({
   selector: 'jd-map',
   templateUrl: './map.component.html',
   styleUrls: ['./map.component.scss'],
 })
 export class MapComponent implements OnInit {
-  constructor() {}
+  @ViewChild('leaflet-bottom leaflet-right', { static: false })
+  div!: ElementRef;
+  map: Map | null = null;
+  constructor(private viewContainerRef: ViewContainerRef) {}
 
   ngOnInit(): void {
-    // var map = L.map('map', { zoomSnap: 0.25 }).setView([22, 77], 4.5);
-    // L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
-    //   attribution:
-    //     '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>',
-    // }).addTo(map);
-
-    const osm = L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
-      maxZoom: 19,
-      attribution: '© OpenStreetMap',
-    });
+    // this.viewContainerRef.createComponent(BottomLeftControlComponent);
+    const osm = new TileLayer(
+      'https://tile.openstreetmap.org/{z}/{x}/{y}.png',
+      {
+        maxZoom: 19,
+      }
+    );
 
     const osmHOT = L.tileLayer(
       'https://{s}.tile.openstreetmap.fr/hot/{z}/{x}/{y}.png',
       {
         maxZoom: 19,
-        attribution:
-          '© OpenStreetMap contributors, Tiles style by Humanitarian OpenStreetMap Team hosted by OpenStreetMap France',
       }
     );
     var openTopoMap = L.tileLayer(
       'https://{s}.tile.opentopomap.org/{z}/{x}/{y}.png',
       {
         maxZoom: 19,
-        attribution:
-          'Map data: © OpenStreetMap contributors, SRTM | Map style: © OpenTopoMap (CC-BY-SA)',
       }
     );
     var baseMaps = {
       OpenStreetMap: osm,
       'OpenStreetMap.HOT': osmHOT,
       openTopoMap: openTopoMap,
+      'Custom Canvas Layer': new CanvasLayer(),
     };
-    var map = L.map('map', { zoomSnap: 0.25, layers: [osm] }).setView(
-      [22, 77],
-      4.5
-    );
-    var layerControl = L.control.layers(baseMaps).addTo(map);
-    console.log(map);
+    this.map = new Map('map', {
+      zoomSnap: 0.25,
+      layers: [osm],
+      attributionControl: false,
+    }).setView([22, 80], 4.5);
+    console.log(this.div);
+    var layerControl = L.control.layers(baseMaps).addTo(this.map);
+    console.log(this.map);
   }
 }

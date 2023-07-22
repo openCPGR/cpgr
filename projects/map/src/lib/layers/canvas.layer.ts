@@ -1,4 +1,4 @@
-import { ICoords, IGridOptions } from '../interfaces/map';
+import { ICoords, IGridOptions } from '../interfaces/map.interface';
 
 declare var L: { GridLayer: any };
 
@@ -14,6 +14,7 @@ export class CanvasLayer extends L.GridLayer {
     tile.setAttribute('width', tileSize.x);
     tile.setAttribute('height', tileSize.y);
     tile.style.outline = '1px solid red';
+    tile.style.opacity = '0';
 
     var ctx = tile.getContext('2d');
     ctx?.beginPath();
@@ -27,11 +28,7 @@ export class CanvasLayer extends L.GridLayer {
     );
     ctx?.fill();
     ctx?.beginPath();
-    ctx?.fillText(
-      '' + coords.x + ',' + coords.y + ',' + coords.z,
-      5,
-      10
-    );
+    ctx?.fillText('' + coords.x + ',' + coords.y + ',' + coords.z, 5, 10);
     return tile;
   }
 }
