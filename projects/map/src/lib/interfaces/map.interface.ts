@@ -1,11 +1,21 @@
-export interface L {
+export interface IL {
   options: any;
   extends: () => void;
   include: () => void;
-  initialize: () => void;
+  initialize: (options: IOptions) => void;
 }
 
-export interface IMap {
+export interface IControl extends IL {
+  onAdd: (map: IMap) => HTMLElement;
+  onRemove: (map: IMap) => void;
+}
+
+export interface IHandler extends IL {
+  addHook: () => void;
+  removeHook: () => void;
+}
+
+export interface IMap extends IL {
   layers: ILayer[];
   addHandler?: () => IMap;
   addControl?: () => IMap;
@@ -14,13 +24,25 @@ export interface IMap {
   removeLayer?: () => IMap;
 }
 
-export interface ILayer {
+export interface IEventMap {
+  [key: string]: Function;
+}
+
+export interface IEvented extends IL {
+  on: (type: string | IEventMap, fn?: Function, context?: Object) => this;
+  off: (type?: string | IEventMap, fn?: Function, context?: Object) => this;
+  fire: () => void;
+}
+
+export interface ILayer extends IEvented {
   onAdd?: () => void;
   onRemove?: (map: IMap) => void;
   getEvent?: () => void;
   getAttribution?: () => void;
   beforeAdd?: (map: IMap) => void;
 }
+
+export interface ILayerGroup extends ILayer {}
 
 export interface IOptions {}
 
