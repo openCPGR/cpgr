@@ -1,7 +1,6 @@
 import {
   Component,
   OnInit,
-  ViewContainerRef,
   Input,
   Renderer2,
   ElementRef,
