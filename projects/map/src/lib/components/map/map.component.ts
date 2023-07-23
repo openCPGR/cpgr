@@ -6,9 +6,9 @@ import {
   ViewContainerRef,
 } from '@angular/core';
 import { CanvasLayer } from '../../layers/canvas.layer';
-import { POSITIONS } from '../../enums/map.enum';
 import { Map, TileLayer } from 'leaflet';
-import { BottomRightControl } from '../../layers/control.layer';
+import 'leaflet-draw';
+
 declare var L: any;
 @Component({
   selector: 'jd-map',
@@ -30,13 +30,13 @@ export class MapComponent implements OnInit {
       }
     );
 
-    const osmHOT = L.tileLayer(
+    const osmHOT = new TileLayer(
       'https://{s}.tile.openstreetmap.fr/hot/{z}/{x}/{y}.png',
       {
         maxZoom: 19,
       }
     );
-    var openTopoMap = L.tileLayer(
+    var openTopoMap = new TileLayer(
       'https://{s}.tile.opentopomap.org/{z}/{x}/{y}.png',
       {
         maxZoom: 19,
@@ -52,9 +52,11 @@ export class MapComponent implements OnInit {
       zoomSnap: 0.25,
       layers: [osm],
       attributionControl: false,
+      drawControl: true
     }).setView([22, 80], 4.5);
     console.log(this.div);
     var layerControl = L.control.layers(baseMaps).addTo(this.map);
+    L.control.scale().addTo(this.map);
     console.log(this.map);
   }
 }
