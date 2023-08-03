@@ -30,9 +30,14 @@ export class SidebarComponent implements OnInit {
       link: 'map',
       icon: 'pin-map',
     },
+    {
+      name: 'Local Government Directory',
+      link: 'lgd',
+      icon: 'card-checklist',
+    },
   ];
 
-  bottomNavList :INav[] = [
+  bottomNavList: INav[] = [
     {
       name: 'Setting',
       link: '',

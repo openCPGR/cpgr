@@ -27,6 +27,11 @@ const routes: Routes = [
       import('projects/map/src/public-api').then((m) => m.MapModule),
   },
   {
+    path: 'lgd',
+    loadChildren: () =>
+      import('./feature/lgd/lgd.module').then((m) => m.LgdModule),
+  },
+  {
     path: '',
     redirectTo: 'home',
     pathMatch: 'full',

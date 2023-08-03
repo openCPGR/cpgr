@@ -1,0 +1,7 @@
+<lib-breadcrumb [navList]="nav"> </lib-breadcrumb>
+<lib-grid
+  [columnDefs]="conDef"
+  [rowData$]="rowData$"
+  (onGridReady)="onGridReady($event)"
+  class="ticket-grid"
+></lib-grid>
