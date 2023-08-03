@@ -22,7 +22,6 @@ export class MapComponent implements OnInit {
   constructor(private viewContainerRef: ViewContainerRef) {}
 
   ngOnInit(): void {
-    // this.viewContainerRef.createComponent(BottomLeftControlComponent);
     const osm = new TileLayer(
       'https://tile.openstreetmap.org/{z}/{x}/{y}.png',
       {
