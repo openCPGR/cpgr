@@ -19,16 +19,16 @@ export class LgdListComponent implements OnInit {
   ];
 
   conDef: ColDef[] = [
-    { field: '0', sort: 'asc', headerName: 'State Code' },
-    { field: '1', headerName: 'State Name' },
+    { field: 'state_census2011_code', sort: 'asc', headerName: 'State Code' },
+    { field: 'state_name_english', headerName: 'State Name' },
     {
-      field: '4',
+      field: 'state_or_ut',
       headerName: 'State/Union territory(UT)',
       cellRenderer: (params: ICellRendererParams) => {
-        return params.value === 'S' ? 'State': 'UT';
+        return params.value === 'S' ? 'State' : 'UT';
       },
     },
-    { field: '5', headerName: 'Last Updated' },
+    { field: 'last_updated', headerName: 'Last Updated' },
   ];
   rowData$!: Observable<any[]>;
   constructor(private _lgd: LgdService) {}
@@ -36,9 +36,7 @@ export class LgdListComponent implements OnInit {
   ngOnInit(): void {}
 
   onGridReady(params: GridReadyEvent) {
-    this.rowData$ = new Observable((observe) => {
-      observe.next(this._lgd.getStates());
-    });
+    this.rowData$ = this._lgd.getStates();
     params.api.sizeColumnsToFit();
   }
 }
