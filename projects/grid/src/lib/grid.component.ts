@@ -26,6 +26,7 @@ import { ActionComponent } from './cell-renderer/action/action.component';
 })
 export class GridComponent implements OnInit {
   @Input() columnDefs: ColDef[] = [];
+  @Input() pagination : boolean = false;
 
   @Input() rowData$!: Observable<any[]>;
   @Output() onGridReady = new EventEmitter<GridReadyEvent>();
