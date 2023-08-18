@@ -3,6 +3,10 @@ import { ColDef, GridReadyEvent, ICellRendererParams } from 'ag-grid-community';
 import { INav } from 'projects/ui-tools/src/public-api';
 import { Observable } from 'rxjs';
 import { LgdService } from '../../services/lgd.service';
+import {
+  IPaginationFunction,
+  IPaginationParams,
+} from 'projects/grid/src/lib/interfaces/pagination-params.interface';
 
 @Component({
   selector: 'pgr-lgd-list',
@@ -31,12 +35,16 @@ export class LgdListComponent implements OnInit {
     { field: 'last_updated', headerName: 'Last Updated' },
   ];
   rowData$!: Observable<any[]>;
+  getRows: IPaginationFunction = (params: IPaginationParams): void => {
+    this.rowData$ = this._lgd.getStates(params.offset, params.limit);
+    console.log(params);
+  };
   constructor(private _lgd: LgdService) {}
 
   ngOnInit(): void {}
 
   onGridReady(params: GridReadyEvent) {
-    this.rowData$ = this._lgd.getStates();
+    this.rowData$ = this._lgd.getStates(0, 10);
     params.api.sizeColumnsToFit();
   }
 }

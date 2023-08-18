@@ -1,0 +1,24 @@
+<div class="row m-0 align-items-center justify-content-end border-top">
+  <div class="col-auto">
+    {{ offset }} to {{ currentPageNumber * limit }} of {{ totalRow }}
+  </div>
+  <div class="col-auto">
+    <button
+      [disabled]="currentPageNumber === 1"
+      class="btn"
+      (click)="previousPage()"
+    >
+      <i class="bi bi-caret-left"></i>
+    </button>
+    <span class="px-2">
+      page {{ currentPageNumber }} of {{ numberOfPages || "undefined" }}</span
+    >
+    <button
+      [disabled]="numberOfPages === currentPageNumber"
+      class="btn"
+      (click)="nextPage()"
+    >
+      <i class="bi bi-caret-right"></i>
+    </button>
+  </div>
+</div>

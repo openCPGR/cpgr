@@ -1,20 +1,20 @@
-<ag-grid-angular
-  style="height: 100%"
-  class="ag-theme-material"
-  [columnDefs]="columnDefs"
-  [defaultColDef]="defaultColDef"
-  [rowData]="rowData$ | async"
-  [rowSelection]="'multiple'"
-  [animateRows]="true"
-  (gridReady)="gridReady($event)"
-  [components]="comp"
-  (rowClicked)="rowClicked($event)"
-  (rowDoubleClicked)="rowDoubleClicked($event)"
-  [suppressRowTransform]="true"
-  [suppressMultiSort]="true"
-  [suppressHorizontalScroll]="true"
-  [alwaysShowVerticalScroll]="true"
-  [pagination]="pagination"
-  [paginationPageSize]="10"
-  [cacheBlockSize]="10"
-></ag-grid-angular>
+<div style="height: 100%">
+  <ag-grid-angular
+    style="height: calc(100% - 38px)"
+    class="ag-theme-material"
+    [columnDefs]="columnDefs"
+    [defaultColDef]="defaultColDef"
+    [rowData]="rowData$ | async"
+    [rowSelection]="'multiple'"
+    [animateRows]="true"
+    (gridReady)="gridReady($event)"
+    [components]="comp"
+    (rowClicked)="rowClicked($event)"
+    (rowDoubleClicked)="rowDoubleClicked($event)"
+    [suppressRowTransform]="true"
+    [suppressMultiSort]="true"
+    [suppressHorizontalScroll]="true"
+    [alwaysShowVerticalScroll]="true"
+  ></ag-grid-angular>
+  <lib-pagination (next)="next($event)"></lib-pagination>
+</div>

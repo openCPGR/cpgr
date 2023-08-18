@@ -11,13 +11,16 @@ import { AgGridAngular } from 'ag-grid-angular';
 import {
   ColDef,
   GridReadyEvent,
-  CellClickedEvent,
-  FrameworkComponentWrapper,
+  IDatasource,
   RowClickedEvent,
   RowDoubleClickedEvent,
 } from 'ag-grid-community';
-import { Observable } from 'rxjs';
+import { Observable, repeat } from 'rxjs';
 import { ActionComponent } from './cell-renderer/action/action.component';
+import {
+  IPaginationFunction,
+  IPaginationParams,
+} from './interfaces/pagination-params.interface';
 
 @Component({
   selector: 'lib-grid',
@@ -26,13 +29,14 @@ import { ActionComponent } from './cell-renderer/action/action.component';
 })
 export class GridComponent implements OnInit {
   @Input() columnDefs: ColDef[] = [];
-  @Input() pagination : boolean = false;
 
   @Input() rowData$!: Observable<any[]>;
   @Output() onGridReady = new EventEmitter<GridReadyEvent>();
   @Output() onRowClicked = new EventEmitter<RowClickedEvent>();
   @Output() onRowDoubleClicked = new EventEmitter<RowDoubleClickedEvent>();
   comp = { ActionComponent: ActionComponent };
+
+  @Input() getRows!: IPaginationFunction;
 
   constructor(private http: HttpClient) {}
 
@@ -54,11 +58,15 @@ export class GridComponent implements OnInit {
     // params.api.sizeColumnsToFit()
     this.onGridReady.emit(params);
   }
-  
+
   rowClicked(row: RowClickedEvent): void {
     this.onRowClicked.emit(row);
   }
   rowDoubleClicked(row: RowDoubleClickedEvent): void {
     this.onRowDoubleClicked.emit(row);
+  }
+
+  next(params: IPaginationParams) {
+    this.getRows.call(this, params);
   }
 }
