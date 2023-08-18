@@ -2,7 +2,7 @@
 <lib-grid
   [columnDefs]="conDef"
   [rowData$]="rowData$"
-  [pagination]="true"
   (onGridReady)="onGridReady($event)"
   class="ticket-grid"
+  [getRows]="getRows"
 ></lib-grid>

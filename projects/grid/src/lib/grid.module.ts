@@ -4,13 +4,14 @@ import { AgGridModule } from 'ag-grid-angular';
 import { HttpClientModule } from '@angular/common/http'
 import { CommonModule } from '@angular/common';
 import { ActionComponent } from './cell-renderer/action/action.component';
-
+import { PaginationComponent } from './components/pagination/pagination.component';
 
 
 @NgModule({
   declarations: [
     GridComponent,
-    ActionComponent
+    ActionComponent,
+    PaginationComponent,
   ],
   imports: [
     CommonModule,
