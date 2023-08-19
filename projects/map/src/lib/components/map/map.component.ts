@@ -53,9 +53,7 @@ export class MapComponent implements OnInit {
       attributionControl: false,
       drawControl: true
     }).setView([22, 80], 4.5);
-    console.log(this.div);
     var layerControl = L.control.layers(baseMaps).addTo(this.map);
     L.control.scale().addTo(this.map);
-    console.log(this.map);
   }
 }

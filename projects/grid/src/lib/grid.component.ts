@@ -37,6 +37,7 @@ export class GridComponent implements OnInit {
   comp = { ActionComponent: ActionComponent };
 
   @Input() getRows!: IPaginationFunction;
+  @Input() total : number = NaN;
 
   constructor(private http: HttpClient) {}
 
