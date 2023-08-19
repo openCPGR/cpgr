@@ -1,8 +1,14 @@
-<lib-breadcrumb [navList]="nav"> </lib-breadcrumb>
+<lib-breadcrumb [navList]="nav">
+  <div *ngIf="this.apiConfig.type !== 'village'" class="p-2 text-warning">
+    Note: Double click to check local directory
+  </div>
+</lib-breadcrumb>
 <lib-grid
-  [columnDefs]="conDef"
+  [columnDefs]="colDef"
   [rowData$]="rowData$"
   (onGridReady)="onGridReady($event)"
   class="ticket-grid"
   [getRows]="getRows"
+  (onRowDoubleClicked)="onRowDoubleClicked($event)"
+  [total]="total"
 ></lib-grid>

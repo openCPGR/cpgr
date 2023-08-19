@@ -16,5 +16,5 @@
     [suppressHorizontalScroll]="true"
     [alwaysShowVerticalScroll]="true"
   ></ag-grid-angular>
-  <lib-pagination (next)="next($event)"></lib-pagination>
+  <lib-pagination (next)="next($event)" [totalRow]="total"></lib-pagination>
 </div>

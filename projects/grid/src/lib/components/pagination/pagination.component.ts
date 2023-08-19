@@ -12,7 +12,6 @@ export class PaginationComponent implements OnInit {
 
   @Output() next = new EventEmitter<IPaginationParams>();
 
-  numberOfPages: number = NaN;
   currentPageNumber: number = 1;
 
   constructor() {}
@@ -21,11 +20,11 @@ export class PaginationComponent implements OnInit {
     return (this.currentPageNumber - 1) * this.limit;
   }
 
-  ngOnInit(): void {
-    if (this.totalRow) {
-      this.numberOfPages = Math.round(this.totalRow / this.limit);
-    }
+  get numberOfPages(): number {
+    return Math.ceil(this.totalRow / this.limit);
   }
+
+  ngOnInit(): void {}
   previousPage() {
     this.currentPageNumber--;
     this.next.emit({ offset: this.offset, limit: this.limit });
