@@ -32,6 +32,11 @@ const routes: Routes = [
       import('./feature/lgd/lgd.module').then((m) => m.LgdModule),
   },
   {
+    path: 'user',
+    loadChildren: () =>
+      import('projects/user/src/public-api').then((m) => m.UserModule),
+  },
+  {
     path: '',
     redirectTo: 'home',
     pathMatch: 'full',

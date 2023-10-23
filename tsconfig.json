@@ -23,6 +23,10 @@
       "ui-tools": [
         "dist/ui-tools/ui-tools",
         "dist/ui-tools"
+      ],
+      "user": [
+        "dist/user/user",
+        "dist/user"
       ]
     },
     "noPropertyAccessFromIndexSignature": true,

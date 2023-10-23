@@ -34,7 +34,11 @@ export class SidebarComponent implements OnInit {
       name: 'Local Government Directory',
       link: 'lgd',
       icon: 'card-checklist',
-    },
+    }, {
+      name: 'User Management',
+      link: 'user',
+      icon: 'people',
+    }
   ];
 
   bottomNavList: INav[] = [
