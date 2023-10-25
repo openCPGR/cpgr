@@ -2,7 +2,7 @@ import { USER_TYPE } from '../enums/user.enum';
 import { IAddress, IUser } from '../interfaces/user.interface';
 
 export class User implements IUser {
-  id: string | null = null;
+  id: number | null = null;
   name: string = '';
   email: string = '';
   mNumber: number | null = null;

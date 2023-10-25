@@ -1,5 +1,5 @@
 <div class="container-fluid">
-  <form class="row">
+  <form [formGroup]="user" class="row">
     <div class="row g-3">
       <div class="col-md-4">
         <label for="name" class="form-label">Name</label>
@@ -13,48 +13,49 @@
         <label for="mobile" class="form-label">Mobile</label>
         <input type="number" formControlName="mNumber" class="form-control" id="mobile" />
       </div>
-
-      <div class="col-md-6">
-        <label for="inputAddress" class="form-label">Address line 1</label>
-        <input
-          type="text"
-          class="form-control"
-          id="inputAddress"
-          placeholder="1234 Main St"
-          formControlName="line1"
-        />
-      </div>
-      <div class="col-md-6">
-        <label for="inputAddress2" class="form-label">Address line 2</label>
-        <input
-          type="text"
-          class="form-control"
-          id="inputAddress2"
-          formControlName="line2"
-          placeholder="Apartment, studio, or floor"
-        />
-      </div>
-      <div class="col-md-4">
-        <label for="inputZip" class="form-label">Zip</label>
-        <input type="text" formControlName="pinCode" class="form-control" id="inputZip" />
-      </div>
-      <div class="col-md-4">
-        <label for="inputState" class="form-label">State</label>
-        <input type="text" formControlName="state" class="form-control" id="inputState" />
-      </div>
-      <div class="col-md-4">
-        <label for="inputCountry" class="form-label">Country</label>
-        <input type="text" formControlName="country" class="form-control" id="inputCountry" />
-      </div>
-      <div class="col-md-4">
-        <label for="userType" class="form-label">User Type</label>
-        <select id="userType"  formControlName="type" class="form-select">
-          <option selected>Officer</option>
-          <option>Citizen</option>
-        </select>
-      </div>
+      <ng-container *ngIf="address" [formGroup]="address">
+        <div class="col-md-6">
+          <label for="inputAddress" class="form-label">Address line 1</label>
+          <input
+            type="text"
+            class="form-control"
+            id="inputAddress"
+            placeholder="1234 Main St"
+            formControlName="line1"
+          />
+        </div>
+        <div class="col-md-6">
+          <label for="inputAddress2" class="form-label">Address line 2</label>
+          <input
+            type="text"
+            class="form-control"
+            id="inputAddress2"
+            formControlName="line2"
+            placeholder="Apartment, studio, or floor"
+          />
+        </div>
+        <div class="col-md-4">
+          <label for="inputZip" class="form-label">Zip</label>
+          <input type="text" formControlName="pinCode" class="form-control" id="inputZip" />
+        </div>
+        <div class="col-md-4">
+          <label for="inputState" class="form-label">State</label>
+          <input type="text" formControlName="state" class="form-control" id="inputState" />
+        </div>
+        <div class="col-md-4">
+          <label for="inputCountry" class="form-label">Country</label>
+          <input type="text" formControlName="country" class="form-control" id="inputCountry" />
+        </div>
+        <div class="col-md-4">
+          <label for="userType" class="form-label">User Type</label>
+          <select id="userType"  formControlName="type" class="form-select">
+            <option selected>Officer</option>
+            <option>Citizen</option>
+          </select>
+        </div>
+      </ng-container>
       <div class="row justify-content-center">
-            <button type="submit" class="btn btn-primary col-2" (click)="submit()">Create</button>
+            <button type="submit" [disabled]="user.invalid" class="btn btn-primary col-2" (click)="submit()">Create</button>
       </div>
     </div>
   </form>

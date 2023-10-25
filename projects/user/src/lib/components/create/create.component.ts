@@ -1,7 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { User } from '../../modal/user';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
+import { UserService } from '../../services/user.service';
+import { IUser } from '../../interfaces/user.interface';
 
 @Component({
   selector: 'lib-create',
@@ -10,31 +12,61 @@ import { ActivatedRoute } from '@angular/router';
 })
 export class CreateComponent implements OnInit {
   user: FormGroup = new FormGroup({});
-  defaultValue!: User;
 
-  constructor(private route: ActivatedRoute) {}
+  constructor(
+    private route: ActivatedRoute,
+    private _userService: UserService,
+    private _router: Router
+  ) {}
 
   ngOnInit(): void {
     this.route.data.subscribe((data) => {
-      this.defaultValue = data['user'];
+      this.createUser(data['user']);
     });
   }
 
-  createUser() {
-    this.user.addControl('name', new FormControl(this.defaultValue.name, Validators.required));
-    this.user.addControl('email', new FormControl(this.defaultValue.email, Validators.required));
-    this.user.addControl('mNumber', new FormControl(this.defaultValue.mNumber, Validators.required));
-    this.user.addControl('type', new FormControl(this.defaultValue.type, Validators.required));
-    this.user.addControl('address', new FormGroup({
-      'line1': new FormControl(this.defaultValue.address.line1, Validators.required),
-      'line2': new FormControl(this.defaultValue.address.line2, Validators.required),
-      'pinCode': new FormControl(this.defaultValue.address.pinCode, Validators.required),
-      'state': new FormControl(this.defaultValue.address.state, Validators.required),
-      'country': new FormControl(this.defaultValue.address.country, Validators.required)
-    }))
+  createUser(defaultValue: IUser) {
+    this.user.addControl(
+      'name',
+      new FormControl(defaultValue.name, Validators.required)
+    );
+    this.user.addControl(
+      'email',
+      new FormControl(defaultValue.email, Validators.required)
+    );
+    this.user.addControl(
+      'mNumber',
+      new FormControl(defaultValue.mNumber, Validators.required)
+    );
+    this.user.addControl(
+      'type',
+      new FormControl(defaultValue.type, Validators.required)
+    );
+    this.user.addControl(
+      'address',
+      new FormGroup({
+        line1: new FormControl(defaultValue.address.line1, Validators.required),
+        line2: new FormControl(defaultValue.address.line2, Validators.required),
+        pinCode: new FormControl(
+          defaultValue.address.pinCode,
+          Validators.required
+        ),
+        state: new FormControl(defaultValue.address.state, Validators.required),
+        country: new FormControl(
+          defaultValue.address.country,
+          Validators.required
+        ),
+      })
+    );
   }
 
-  submit(){
-    
+  get address(): FormGroup {
+    return this.user.get('address') as FormGroup;
+  }
+
+  submit() {
+    this.user.markAllAsTouched();
+    this._userService.create(this.user.getRawValue());
+    this._router.navigateByUrl('user');
   }
 }

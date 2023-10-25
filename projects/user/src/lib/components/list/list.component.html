@@ -1,0 +1,13 @@
+<lib-breadcrumb [navList]="nav">
+    <button class="btn" routerLink="create" title="Create ticket">
+      <i class="bi bi-plus-square"></i>
+    </button>
+  </lib-breadcrumb>
+  <lib-grid
+    [columnDefs]="conDef"
+    [rowData$]="rowData$"
+    (onGridReady)="onGridReady($event)"
+    (onRowDoubleClicked)="onRowDoubleClicked($event)"
+    class="ticket-grid"
+  ></lib-grid>
+  
