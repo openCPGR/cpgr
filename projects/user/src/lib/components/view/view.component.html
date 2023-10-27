@@ -1,0 +1,45 @@
+<lib-breadcrumb [navList]="nav"> </lib-breadcrumb>
+<div class="container col pt-5">
+  <div class="row">
+    <div class="col-2">User Id</div>
+    <div class="col text-primary">: {{ user?.id }}</div>
+  </div>
+  <div class="row">
+    <div class="col-2">Name</div>
+    <div class="col">: {{ user?.name }}</div>
+  </div>
+  <div class="row">
+    <div class="col-2">Email</div>
+    <div class="col">: {{ user?.email }}</div>
+  </div>
+  <div class="row">
+    <div class="col-2">Mobile number</div>
+    <div class="col">: {{ user?.mNumber }}</div>
+  </div>
+  <div class="row">
+    <div class="col-2">Type</div>
+    <div class="col">: {{ user?.type }}</div>
+  </div>
+  <div class="row">
+    <div class="col-2">Address line 1</div>
+    <div class="col">: {{ user?.address?.line1 }}</div>
+  </div>
+  <address>
+    <div class="row">
+        <div class="col-2">Address line 2</div>
+        <div class="col">: {{ user?.address?.line2 }}</div>
+      </div>
+      <div class="row">
+        <div class="col-2">State</div>
+        <div class="col">: {{ user?.address?.state }}</div>
+      </div>
+      <div class="row">
+        <div class="col-2">Country</div>
+        <div class="col">: {{ user?.address?.country }}</div>
+      </div>
+      <div class="row">
+        <div class="col-2">Zip code</div>
+        <div class="col">: {{ user?.address?.pinCode }}</div>
+      </div>
+  </address>
+</div>

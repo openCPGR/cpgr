@@ -1,17 +1,25 @@
 import { Injectable } from '@angular/core';
 import {
-  Router, Resolve,
+  Router,
+  Resolve,
   RouterStateSnapshot,
-  ActivatedRouteSnapshot
+  ActivatedRouteSnapshot,
 } from '@angular/router';
 import { Observable, of } from 'rxjs';
 import { User } from '../modal/user';
+import { UserService } from '../services/user.service';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class GetUserResolver implements Resolve<User> {
-  resolve(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): Observable<User> {
-    return of(new User());
+  constructor(private _userService: UserService) {}
+  resolve(
+    route: ActivatedRouteSnapshot,
+    state: RouterStateSnapshot
+  ): Observable<User> {
+    const id: number = parseInt(route.params['id']);
+    const user = this._userService.getUser(id);
+    return of(new User(user));
   }
 }

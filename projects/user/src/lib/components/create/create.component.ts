@@ -12,6 +12,7 @@ import { IUser } from '../../interfaces/user.interface';
 })
 export class CreateComponent implements OnInit {
   user: FormGroup = new FormGroup({});
+  defaultValue!: IUser;
 
   constructor(
     private route: ActivatedRoute,
@@ -21,7 +22,8 @@ export class CreateComponent implements OnInit {
 
   ngOnInit(): void {
     this.route.data.subscribe((data) => {
-      this.createUser(data['user']);
+      this.defaultValue = data['user'];
+      this.createUser(this.defaultValue);
     });
   }
 
@@ -66,7 +68,13 @@ export class CreateComponent implements OnInit {
 
   submit() {
     this.user.markAllAsTouched();
-    this._userService.create(this.user.getRawValue());
+    const newUser = this.user.getRawValue();
+    if (this.defaultValue.id) {
+      this._userService.update(newUser, this.defaultValue.id);
+    } else {
+      this._userService.create(newUser);
+    }
+
     this._router.navigateByUrl('user');
   }
 }

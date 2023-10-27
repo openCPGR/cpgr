@@ -60,17 +60,17 @@ export class ListComponent implements OnInit {
   }
 
   onRowDoubleClicked(row: RowDoubleClickedEvent) {
-    const ticket: IUser = row.data;
-    this._router.navigateByUrl('tickets/view/' + ticket.id);
+    const user: IUser = row.data;
+    this._router.navigateByUrl('user/view/' + user.id);
   }
 
   editClicked(params: ICellRendererParams): void {
-    const ticket: IUser = params.data;
-    this._router.navigate(['user/create'], { state: ticket });
+    const user: IUser = params.data;
+    this._router.navigate(['user/edit', user.id]);
   }
 
   viewClicked(params: ICellRendererParams): void {
-    const ticket: IUser = params.data;
-    this._router.navigateByUrl('tickets/view/' + ticket.id);
+    const user: IUser = params.data;
+    this._router.navigate(['user/view', user.id]);
   }
 }

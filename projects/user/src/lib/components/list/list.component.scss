@@ -1,0 +1,7 @@
+$breadcrumb-border: 1px;
+$breadcrumb-height: 2.5rem;
+.user-grid {
+  height: calc(100% - $breadcrumb-height - $breadcrumb-border);
+  display: block;
+}
+

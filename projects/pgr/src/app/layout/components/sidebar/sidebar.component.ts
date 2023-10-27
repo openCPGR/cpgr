@@ -21,11 +21,6 @@ export class SidebarComponent implements OnInit {
       icon: 'grid',
     },
     {
-      name: 'Ticket Management',
-      link: 'tickets',
-      icon: 'ticket-detailed',
-    },
-    {
       name: 'Map',
       link: 'map',
       icon: 'pin-map',
@@ -34,11 +29,17 @@ export class SidebarComponent implements OnInit {
       name: 'Local Government Directory',
       link: 'lgd',
       icon: 'card-checklist',
-    }, {
+    },
+    {
+      name: 'Ticket Management',
+      link: 'tickets',
+      icon: 'ticket-detailed',
+    },
+    {
       name: 'User Management',
       link: 'user',
       icon: 'people',
-    }
+    },
   ];
 
   bottomNavList: INav[] = [
